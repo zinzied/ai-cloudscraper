@@ -410,7 +410,7 @@ class PayloadObfuscator:
     
     def _encode_values(self, data: Dict[str, Any]) -> Dict[str, Any]:
         """Encode some values"""
-        for key, value in data.items():
+        for key, value in list(data.items()):
             if isinstance(value, str) and random.random() < 0.1:  # 10% chance
                 # Base64 encode some values (if appropriate)
                 if len(value) > 5 and key.lower() not in ['password', 'token', 'key']:
